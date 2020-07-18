@@ -13,5 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+## Landing
 Route::get('/', 'LandingController@index');
+
+## Editor
 Route::get('/editor', 'EditorController@index');
+Route::post('/editor', 'EditorController@process_save');
+
+## Mods
+Route::get('/mods', 'ModsController@index');

@@ -14,8 +14,13 @@
             </p>
             <h2 class="w3-text-light-grey">Paste</h2>
             <hr style="width:200px" class="w3-opacity">
-            <p>
-                <input class="w3-input w3-padding-16" type="text" placeholder="Paste your save here" required name="save">
-            </p>
+            <form action="/editor" method="POST">
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Paste your save here" required name="save"></p>
+                <p>
+                    <button class="w3-button w3-light-grey w3-padding-large w3-section" type="submit">
+                        <i class="fa fa-cogs"></i> Process save
+                    </button>
+                </p>
+            </form>
         </div>
 @endsection
