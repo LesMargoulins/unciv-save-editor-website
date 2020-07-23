@@ -557,4 +557,21 @@ class Utilities extends Controller
         }
         return $new_hash;
     }
+
+    public function fix_json_key($string)
+    {
+        $regex = '/(?<!")([a-zA-Z0-9_\-\ ]+)(?!")(?=:)/i';
+        return preg_replace($regex, '"$1"', $string);
+    }
+
+    public function fix_json_string($string)
+    {
+        $regex = '/(?<=enemy |our )(\[)([\w\s\-\.]+)(\])(?=\"| has| was)/imU';
+        $string = preg_replace($regex, '_NONREDONDANT_LMAO_OPEN_$2_NONREDONDANT_LMAO_CLOSE_', $string);
+        $regex = '/(?<=:|\[|\,)([\w\s\-\.]+)(?=[\[,\]\{\}])/imU';
+        $string = preg_replace($regex, '"$1"', $string);
+        $regex = '/(_NONREDONDANT_LMAO_OPEN_)([\w\ ]*)(_NONREDONDANT_LMAO_CLOSE_)/imU';
+        $string = preg_replace($regex, '[$2]', $string);
+        return $string;
+    }
 }
